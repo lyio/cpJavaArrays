@@ -1,25 +1,28 @@
-import java.util.Objects;
-
 public class ArrayStuff {
 
     public static void main(final String[] args) {
-        // declare array
+        // declare array of primitives
         int [] numbers;
 
-        // initialize array
+        // initialize array of primitives
         numbers = new int[7];
 
+        System.out.println(numbers);
+
+        // a different way to get an array of primitives
         numbers = IntArray.getIntArray();
 
-        final Dog[] dogs = DogArray.getDogs();
-        dogs[0].bark();
+        // and now for something completely different: reference types
+        final Dwarf[] dwarfs = DwarfArray.getDwarfs();
 
-        for (final Dog d : dogs) {
-            d.bark();
+        // have them do something
+        for (final Dwarf d : dwarfs) {
+            d.greet();
         }
 
-        Object[] objects = dogs;
-        objects[0] = new Dog();
-        objects[1] = "this string literal is an object --> no compile time error";
+        // demonstrating covariance
+        Object[] objects = dwarfs;
+        objects[0] = new Dwarf("Grumpy");
+        // objects[1] = "this string literal is an object --> no compile time error";
     }
 }
